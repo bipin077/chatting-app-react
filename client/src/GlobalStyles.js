@@ -12,6 +12,7 @@ export const GlobalStyle = createGlobalStyle`
     outline : none;
     box-sizing : border-box;
     font-family: 'Playfair Display', serif;
+    transition : .2s linear all;
 }
 
 html {

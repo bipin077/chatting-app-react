@@ -23,7 +23,8 @@ const App = () =>
         <BrowserRouter>
             <GlobalStyle />
                 <Routes>
-                    <Route path="/" element={ <Chats /> } />
+                    <Route path="/" element={ <Dashboard /> } />
+                    <Route path="/chats/:id" element={ <Chats /> } />
                     <Route path="/login" element={ <Login /> } />
                     <Route path="/register" element={<Register /> } />
                 </Routes>

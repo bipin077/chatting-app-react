@@ -1,15 +1,24 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import Wrapper from '../Screens/Wrapper';
+import { useParams } from 'react-router-dom';
+import {useGetSingleUserQuery} from "../Store/Services/UserServices";
+
 
 const Chats = () => {
+
+    let {id} = useParams();
+
+    // getting user details 
+    const {data=[], isFetching} = useGetSingleUserQuery(id);
+
   const Container = styled.section`
   
   width : 100%;
 
     .chats-section{
       padding : 20px;
-      overflow-y: scroll;
+      overflow-y: auto;
       display: flex;
       flex-direction: column;
       height : 75vh;

@@ -1,13 +1,56 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components";
 import {BiLockOpenAlt, BiEnvelopeOpen} from "react-icons/bi";
 import {BsFillPhoneVibrateFill} from "react-icons/bs";
 import {MdOutlinePassword} from "react-icons/md";
-
-
-
+import { useRegisterUserMutation } from "../Store/Services/UserServices";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {setAdminToken} from "../Store/Reducers/AuthReducer";
+import {addSenderDetails} from "../Store/Reducers/UserReducer";
 
 const Register = () => {
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
+  const [registerUser, response, isLoading] = useRegisterUserMutation();
+  console.log(response);
+
+  const errors = response?.error?.data?.error ? response?.error?.data?.error : '';
+
+  const [state, setState] = useState({
+    name : '',
+    phone : '',
+    email : '',
+    password : ''
+  });
+
+  const handleInput = (e) =>
+  {
+      setState({...state, [e.target.name] : e.target.value });
+  }
+
+  const formSubmitHandler = (e) =>
+  {
+      e.preventDefault();
+      registerUser(state);
+  }
+
+  useEffect(()=>
+  {
+    if(response?.isSuccess)
+    {
+        const admin_token = response?.data?.token ? response?.data?.token : '';
+        const sender = response?.data?.user ? response?.data?.user : ''; 
+        localStorage.setItem("admin-token", admin_token);
+        localStorage.setItem("sender", JSON.stringify(sender));
+        dispatch(setAdminToken(admin_token));
+        dispatch(addSenderDetails(sender))
+        navigate("/");
+    }
+  }, [response?.isSuccess])
+
   const Wrapper = styled.section`
 
 
@@ -515,6 +558,13 @@ const Register = () => {
         font-size : 18px !important;
     }
 
+    .error h2{
+      background : ${({theme})=>theme.colors.green};
+      padding : 2px 15px;
+      color : #f3f3f3;
+      border-left : 5px solid red;
+    }
+
 
   `;
   return (
@@ -526,26 +576,35 @@ const Register = () => {
           </div>
           <div className="row clearfix">
             <div className="">
-              <form action="upload.php" method="post" enctype="multipart/form-data">
+              <form onSubmit={formSubmitHandler}>
                 <div className="row">
+
+                  { response.isError && errors.map((error)=>
+                    
+                      <div className="input_field col-6 error">
+                        <h2>{ error.errors }</h2>
+                      </div>
+
+                    )}
+
                   <div className="input_field col-6">
                     <span><BiLockOpenAlt className="icon" /></span>
-                    <input type="text" name="name" placeholder="Name" required="" />
+                    <input type="text" name="name" value={state.name} onChange={handleInput} placeholder="Name" required="" />
                   </div>
 
                   <div className="input_field col-6">
                     <span><BiEnvelopeOpen className="icon" /></span>
-                    <input type="email" name="email" placeholder="Email" required="" />
+                    <input type="email" name="email" value={state.email} onChange={handleInput} placeholder="Email" required="" />
                   </div>
 
                   <div className="input_field col-6">
                     <span><BsFillPhoneVibrateFill className="icon" /></span>
-                    <input type="number" name="mob" placeholder="Phone No" />
+                    <input type="number" name="phone" value={state.phone} onChange={handleInput} placeholder="Phone No" />
                   </div>
 
                   <div className="input_field col-6">
                   <span> <MdOutlinePassword className="icon" /> </span>
-                  <input type="password" name="password" placeholder="Password" required="" />
+                  <input type="password" name="password" value={state.password} onChange={handleInput} placeholder="Password" required="" />
                   </div>
                 </div>
 

@@ -1,9 +1,28 @@
-import React from "react";
+import React, {useState, useEffect} from 'react';
 import styled from "styled-components";
-
 import {AiOutlineSend} from "react-icons/ai";
+import { useParams } from 'react-router-dom';
+import {useGetSingleUserQuery} from "../Store/Services/UserServices";
 
 const MessageBox = () => {
+
+  let {id} = useParams();
+
+    // getting user details 
+    const {data=[], isFetching} = useGetSingleUserQuery(id);
+
+  // getting sender details 
+  const senderData = localStorage.getItem("sender");
+  const sender = JSON.parse(senderData);
+
+  // storing message in state
+  const [message, setMessage] = useState('');
+
+  const sendMessage = (e) =>
+  {
+      e.preventDefault();
+  }
+
   const Wrapper = styled.div`
     display: flex;
     justify-content: space-between;
@@ -36,8 +55,8 @@ const MessageBox = () => {
   return (
     <Wrapper>
       <div className="message">
-        <input type="text" placeholder="Enter Message" />
-        <span><AiOutlineSend /></span>
+        <input type="text" placeholder="Enter Message" value={message} onChange={(e)=> setMessage(e.target.value)} />
+        <span><AiOutlineSend onClick={sendMessage} /></span>
       </div>
     </Wrapper>
   );

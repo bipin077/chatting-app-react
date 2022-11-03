@@ -1,13 +1,56 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import styled from "styled-components";
-import {BiLockOpenAlt, BiEnvelopeOpen} from "react-icons/bi";
-import {BsFillPhoneVibrateFill} from "react-icons/bs";
+import {BiEnvelopeOpen} from "react-icons/bi";
 import {MdOutlinePassword} from "react-icons/md";
 
-
-
+import { useLoginUserMutation } from "../Store/Services/UserServices";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import {setAdminToken} from "../Store/Reducers/AuthReducer";
+import {addSenderDetails} from "../Store/Reducers/UserReducer";
 
 const Login = () => {
+
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
+  const [loginUser, response, isLoading] = useLoginUserMutation();
+  console.log(response);
+
+  const errors = response?.error?.data?.errors ? response?.error?.data?.errors : '';
+
+  const [state, setState] = useState({
+    email : '',
+    password : ''
+  });
+
+  const handleInput = (e) =>
+  {
+      e.preventDefault();
+      setState({...state, [e.target.name] : e.target.value });
+  }
+
+  const formSubmitHandler = (e) =>
+  {
+      e.preventDefault();
+      loginUser(state);
+  }
+
+  useEffect(()=>
+  {
+      if(response?.isSuccess)
+      {
+          const admin_token = response?.data?.token ? response?.data?.token : '';
+          const sender = response?.data?.user ? response?.data?.user : ''; 
+          localStorage.setItem("admin-token", admin_token);
+          localStorage.setItem("sender", JSON.stringify(sender));
+          dispatch(setAdminToken(admin_token));
+          dispatch(addSenderDetails(sender))
+          navigate("/");
+      }
+  }, [response?.isSuccess])
+
+
   const Wrapper = styled.section`
 
 
@@ -515,6 +558,13 @@ const Login = () => {
         font-size : 18px !important;
     }
 
+    .error h2{
+      background : ${({theme})=>theme.colors.green};
+      padding : 2px 15px;
+      color : #f3f3f3;
+      border-left : 5px solid red;
+    }
+
 
   `;
   return (
@@ -526,17 +576,25 @@ const Login = () => {
           </div>
           <div className="row clearfix">
             <div className="">
-              <form action="upload.php" method="post" enctype="multipart/form-data">
+            <form onSubmit={formSubmitHandler}>
                 <div className="row">
+
+                { response.isError && errors.map((error)=>
+                    
+                  <div className="input_field col-6 error">
+                    <h2>{ error.error }</h2>
+                  </div>
+
+                )}
 
                   <div className="input_field col-6">
                     <span><BiEnvelopeOpen className="icon" /></span>
-                    <input type="email" name="email" placeholder="Email" required="" />
+                    <input type="email" name="email" value={state.email} onChange={handleInput} placeholder="Email" required="" />
                   </div>
 
                   <div className="input_field col-6">
                   <span> <MdOutlinePassword className="icon" /> </span>
-                  <input type="password" name="password" placeholder="Password" required="" />
+                  <input type="password" name="password" value={state.password} onChange={handleInput} placeholder="Password" required="" />
                   </div>
                 </div>
 

@@ -1,0 +1,4 @@
+side bar footer
+1 settings
+2 logout
+3 

@@ -1,6 +1,7 @@
 const {validationResult} = require("express-validator");
-const user = require("../models/users");
+const userModel = require("../models/users");
 const {validatePassword, hashedPassword} = require("../services/passwordService");
+const {generateToken} = require("../services/tokenService");
 
 module.exports.loginUser = async (req, res) =>
 {
@@ -10,13 +11,14 @@ module.exports.loginUser = async (req, res) =>
         const {email, password} = req.body;
         try
         {
-            const user = await user.findOne({email});
+            const user = await userModel.findOne({email});
             if(user)
             {
-                const check = validatePassword(user.password, password);
+                const check = await validatePassword(user.password, password);
                 if(check)
                 {
-                    return res.status(200).json({msg : "Login Success"});
+                    const token = await generateToken({ email : user.email });
+                    return res.status(200).json({msg : "Login Success", user, token});
                 }
                 else
                 {
@@ -51,24 +53,26 @@ module.exports.registerUser = async (req, res) =>
             {
                 const phoneExists = await userModel.findOne({phone});
                 if(!phoneExists)
-                {
-                    const secure = await hashedPassword(password);
-                    await userModel.create({name, phone, email, password : secure});
-                    return res.status(200).json({msg : "Account Created Successfully."});
+                {                    
+                    const hashed =  hashedPassword(password);
+                    const user = await userModel.create({name, phone, email, password : hashed });
+                    user.save();
+                    const token = await generateToken({email});
+                    return res.status(200).json({msg : "Account Created Successfully.", user, token});
                 }
                 else
                 {
-                    return res.status(501).json({errors : [{ error : " Mobile Number already exists with another account! "}]});
+                    return res.status(501).json({error : [{ errors : " Mobile Number already exists with another account! "}]});
                 }
             }
             else
             {
-                return res.status(501).json({errors : [{ error : " Email already exists with another account! "}]});
+                return res.status(501).json({error : [{ errors : " Email already exists with another account! "}]});
             }
         }
-        catch(err)
+        catch(error)
         {
-            return res.status(501).json({errors : [{ error : " Internal Server Error! ", error : err}]});
+            return res.status(501).json({errors : error});
         }
     }
     else
@@ -76,3 +80,30 @@ module.exports.registerUser = async (req, res) =>
         return res.status(501).json({errors : errors.array()});
     }
 }
+
+module.exports.getAllUsers = async (req, res) =>
+{
+    const {id} = req.params;
+    try 
+    {
+        const users = await userModel.find({_id : { $ne : id }});
+        return res.status(200).json({users});
+    } 
+    catch (error) {
+        return res.status(501).json({errors : error});
+    }
+}
+
+module.exports.getSingleUsers = async (req, res) =>
+{
+    const {id} = req.params;
+    try 
+    {
+        const user = await userModel.findOne({_id : id });
+        return res.status(200).json({user});
+    } 
+    catch (error) {
+        return res.status(501).json({errors : error});
+    }
+}
+

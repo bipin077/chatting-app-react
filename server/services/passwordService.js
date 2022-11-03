@@ -1,21 +1,21 @@
 const bcrypt = require("bcrypt");
 
-module.exports.hashedPassword = async (password) =>
+module.exports.hashedPassword = (password) =>
 {
-    await bcrypt.hash(password, 10, function(error, hash) {
-        if(!error)
-        {
-            return hash;
-        }
-    });
+    const salt = bcrypt.genSaltSync(10);
+    const hash = bcrypt.hashSync(password, salt);
+    return hash;      
 }
 
-module.exports.validatePassword = (oldPassword, newPassword) =>
+module.exports.validatePassword = async (oldPassword, newPassword) =>
 {
-    bcrypt.compare(newPassword, oldPassword, function(error, result) {
-        if(!error)
-        {
-            return result;
-        }
-    });
+    const result = await bcrypt.compare(newPassword, oldPassword);
+    if(result)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
 }

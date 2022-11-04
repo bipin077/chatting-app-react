@@ -46,10 +46,30 @@ const UserServices = createApi({
                         url : `user/${id}`,
                     }
                 }, providesTags : ['users']
+            }),
+            updatePassword : builder.mutation({
+                query : (data) =>
+                {
+                    return {
+                        method : "PUT",
+                        url : "changePassword",
+                        body : data
+                    }
+                }, invalidatesTags : ['users']
+            }),
+            updateDetails : builder.mutation({
+                query : (data) =>
+                {
+                    return {
+                        method : "PUT",
+                        url : "updateUserDetail",
+                        body : data
+                    }
+                }, invalidatesTags : ['users']
             })
         }
     }
 })
 
-export const {useRegisterUserMutation, useLoginUserMutation, useGetAllUsersQuery, useGetSingleUserQuery} = UserServices;
+export const { useUpdateDetailsMutation, useRegisterUserMutation, useLoginUserMutation, useGetAllUsersQuery, useGetSingleUserQuery, useUpdatePasswordMutation} = UserServices;
 export default UserServices;

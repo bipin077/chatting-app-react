@@ -107,3 +107,79 @@ module.exports.getSingleUsers = async (req, res) =>
     }
 }
 
+
+module.exports.updatePassword = async (req, res) =>
+{
+    const errors = validationResult(req);
+    if(errors.isEmpty())
+    {
+        const { userId, old, newPassword, confirm} = req.body;
+        try{
+            const user = await userModel.findOne({ _id : userId });
+            if(user)
+            {
+                const check = await validatePassword(user.password, old);
+                if(check)
+                {
+                    if(newPassword == confirm)
+                    {
+                        const hashed =  hashedPassword(newPassword);
+                        await userModel.updateOne({_id : userId}, {$set : { password : hashed} })
+                        return res.status(200).json({msg : "Password Updated Successfully."});
+                    }
+                    else
+                    {
+                        return res.status(501).json({errors : [{ msg : " New and confirm password not match! "}]});
+                    }
+                }
+                else
+                {
+                    return res.status(501).json({errors : [{ msg : "Old password not match. "}]});
+                }
+            }
+            else
+            {
+                return res.status(501).json({errors : [{ msg : " User not found! "}]});
+            }
+        }
+        catch(error)
+        {
+            return res.status(501).json({errors : error});
+        }
+    }
+    else
+    {
+        return res.status(501).json({errors : errors.array()});
+    }
+}
+
+
+module.exports.updateUserDetails = async (req, res) =>
+{
+    const errors = validationResult(req);
+    if(errors.isEmpty())
+    {
+        const { userId, name, phone, email, avatar} = req.body;
+        try{
+            const user = await userModel.findOne({ _id : userId });
+            if(user)
+            {
+                await userModel.updateOne({_id : userId}, {$set : { name, phone, email, avatar} })
+                return res.status(200).json({msg : "Details Updated Successfully."}); 
+            }
+            else
+            {
+                return res.status(501).json({errors : [{ msg : " User not found! "}]});
+            }
+        }
+        catch(error)
+        {
+            return res.status(501).json({errors : error});
+        }
+    }
+    else
+    {
+        return res.status(501).json({errors : errors.array()});
+    }
+}
+

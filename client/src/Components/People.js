@@ -2,7 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import {Link} from "react-router-dom";
 
-const People = ({name, phone, id}) => {
+const People = ({name, phone, id, avatar}) => {
+
     const senderData = localStorage.getItem("sender");
     const sender = JSON.parse(senderData);
     const Wrapper = styled.div`
@@ -18,7 +19,7 @@ const People = ({name, phone, id}) => {
         align-items : center;
         justify-content : flex-start;
         padding : 0px 10px;
-        margin-top : 10px;
+        margin-top: 10px;
         
     }
     
@@ -60,7 +61,10 @@ const People = ({name, phone, id}) => {
         <Link to="/" >
             <div className='people'>   
                 <div className='image-section'>
-                <img src="https://www.guamhomesforsaleandrent.com/sites/default/files/team10.jpg" />
+                    {
+                        sender.avatar ? <img src={sender.avatar} /> : <img src="https://www.guamhomesforsaleandrent.com/sites/default/files/team10.jpg" />
+                    }
+                    
                 </div>
                 <div className='details-section'>
                     <h2>{name}</h2>
@@ -69,10 +73,12 @@ const People = ({name, phone, id}) => {
             </div>
         </Link> 
         : 
-        <Link to={`/chats/${id}`} >s
+        <Link to={`/chats/${id}`} >
             <div className='people'>   
                 <div className='image-section'>
-                <img src="https://www.guamhomesforsaleandrent.com/sites/default/files/team10.jpg" />
+                {
+                    avatar ? <img src={avatar} /> : <img src="https://www.guamhomesforsaleandrent.com/sites/default/files/team10.jpg" />
+                }
                 </div>
                 <div className='details-section'>
                     <h2>{name}</h2>

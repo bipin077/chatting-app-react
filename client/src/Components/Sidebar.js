@@ -5,7 +5,7 @@ import { useGetAllUsersQuery } from '../Store/Services/UserServices';
 import {AiOutlineSetting, AiOutlineUser, AiOutlineLogout} from "react-icons/ai";
 import { useDispatch } from 'react-redux';
 import {logout} from "../Store/Reducers/AuthReducer";
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
 
@@ -16,14 +16,18 @@ const Sidebar = () => {
   const navigate = useNavigate();
 
     const {data=[], isFetching} = useGetAllUsersQuery(sender._id);
-    //console.log(data);
+    console.log(data);
 
-    const logout = () =>
+    const logoutUser = () =>
     {
+      const status = window.confirm("Are you really want to log out.")
+      if(status)
+      {
         localStorage.removeItem("admin-token");
         localStorage.removeItem("sender");
         dispatch(logout());
         navigate("/login");
+      }
     }
 
 
@@ -52,6 +56,9 @@ const Sidebar = () => {
     .peoples {
       margin-top : 10px;
       padding : 10px;
+      height:80vh;
+      overflow-y : auto;
+      margin-bottom : 200px;
     }
 
     .peoples h3{
@@ -110,14 +117,14 @@ const Sidebar = () => {
 
                 <h3>All Users </h3>
                 { isFetching ? "Loading" : data.users.map((user, key)=>
-                    <People key={key} name={user.name} phone={user.phone} id={user._id} />
+                    <People key={key} name={user.name} phone={user.phone} avatar={user.avatar} id={user._id} />
                 )}            
             </div>
             <div className='bottom-bar'>
                 <div className='icons'>
-                      <AiOutlineSetting  class="bottom-icons"/>
-                      <AiOutlineUser class="bottom-icons" />
-                      <AiOutlineLogout onClick={logout} class="bottom-icons" />
+                      <Link to="/settings"><AiOutlineSetting  class="bottom-icons"/></Link>
+                      <Link to="/profile"><AiOutlineUser class="bottom-icons" /></Link>
+                      <AiOutlineLogout onClick={logoutUser} class="bottom-icons" />
                 </div>
             </div>
         </div>

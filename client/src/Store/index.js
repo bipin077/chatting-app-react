@@ -1,4 +1,4 @@
-import {configureStore} from "@reduxjs/toolkit";
+import {configureStore } from "@reduxjs/toolkit";
 import UserServices from "./Services/UserServices";
 import AuthReducer from "./Reducers/AuthReducer";
 import UserReducer from "./Reducers/UserReducer";
@@ -10,7 +10,8 @@ const Store = configureStore({
         "authReducer" : AuthReducer,
         "sender" : UserReducer,
         [ChatServices.reducerPath] : ChatServices.reducer
-    }
+    },
+    middleware : (getDefaultMiddleware)=> getDefaultMiddleware().concat([UserServices.middleware, ChatServices.middleware])
 })
 
 export default Store;

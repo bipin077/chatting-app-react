@@ -6,7 +6,9 @@ import PrivateRoutes from "./PrivateRoutes";
 import PublicRoutes from "./PublicRoutes";
 import Dashboard from "./Screens/Dashboard";
 import Login from "./Screens/Login";
+import Profile from "./Screens/Profile";
 import Register from "./Screens/Register";
+import Settings from "./Screens/Settings";
 
 const App = () =>
 {
@@ -27,6 +29,8 @@ const App = () =>
             <GlobalStyle />
                 <Routes>
                     <Route path="/" element={ <PrivateRoutes><Dashboard /></PrivateRoutes> } />
+                    <Route path="/profile" element={ <PrivateRoutes><Profile /></PrivateRoutes> } />
+                    <Route path="/settings" element={ <PrivateRoutes><Settings /></PrivateRoutes> } />
                     <Route path="/chats/:id" element={ <PrivateRoutes><Chats /></PrivateRoutes>} />
                     <Route path="/login" element={ <PublicRoutes><Login /></PublicRoutes> } />
                     <Route path="/register" element={<PublicRoutes><Register /></PublicRoutes> } />

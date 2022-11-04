@@ -2,14 +2,29 @@ import React from 'react';
 import styled from 'styled-components';
 import People from './People';
 import { useGetAllUsersQuery } from '../Store/Services/UserServices';
+import {AiOutlineSetting, AiOutlineUser, AiOutlineLogout} from "react-icons/ai";
+import { useDispatch } from 'react-redux';
+import {logout} from "../Store/Reducers/AuthReducer";
+import { useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
 
   const senderData = localStorage.getItem("sender");
   const sender = JSON.parse(senderData);
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
     const {data=[], isFetching} = useGetAllUsersQuery(sender._id);
-    console.log(data);
+    //console.log(data);
+
+    const logout = () =>
+    {
+        localStorage.removeItem("admin-token");
+        localStorage.removeItem("sender");
+        dispatch(logout());
+        navigate("/login");
+    }
 
 
 
@@ -18,6 +33,7 @@ const Sidebar = () => {
     .side-bar{
         height : 100vh;
         background : ${({theme})=> theme.colors.green};
+        position :relative;
     }
 
     .side-bar .logo{
@@ -45,6 +61,41 @@ const Sidebar = () => {
       padding : 5px;
       font-size : 15px;
     }
+
+    .side-bar .bottom-bar{
+        height : 7vh;
+        background : ${({theme})=>theme.colors.sidebarBottom};
+        position : absolute;
+        bottom : 0px;
+        width : 100%;
+       display : flex;
+       align-items : center;
+       justify-content : center;
+    }
+
+    .side-bar .bottom-bar .icons{
+      margin-right : 20px;
+    }
+
+    .side-bar .bottom-bar .icons .bottom-icons{
+        font-size : 18px;
+        margin-left : 40px;
+        cursor : pointer;
+        color : ${({theme})=>theme.colors.light};
+        height : 40px;
+        width : 40px;
+        padding : 10px;
+    }
+
+    .side-bar .bottom-bar .icons .bottom-icons:hover{
+      background : ${({theme})=>theme.colors.light};
+      color : ${({theme})=>theme.colors.sidebarBottom};
+      padding : 10px;
+      font-size : 24px;
+    }
+
+
+
     
     `
 
@@ -61,6 +112,13 @@ const Sidebar = () => {
                 { isFetching ? "Loading" : data.users.map((user, key)=>
                     <People key={key} name={user.name} phone={user.phone} id={user._id} />
                 )}            
+            </div>
+            <div className='bottom-bar'>
+                <div className='icons'>
+                      <AiOutlineSetting  class="bottom-icons"/>
+                      <AiOutlineUser class="bottom-icons" />
+                      <AiOutlineLogout onClick={logout} class="bottom-icons" />
+                </div>
             </div>
         </div>
     </Wrapper>

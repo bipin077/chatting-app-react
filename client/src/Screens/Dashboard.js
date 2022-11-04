@@ -31,15 +31,6 @@ const Dashboard = () => {
    
   }
 
-
-  .container .right-section img:hover
-  {
-    transform: rotateY(90deg);
-    backface-visibility : visible;
-    transform-style: preserve-3d;
-   
-  }
-
   
   .container .right-section h2
   {
@@ -65,7 +56,7 @@ const Dashboard = () => {
         <div className="right-section">
             <img src="./images/chats.png" />
             <h2> Let's Chat </h2>
-            <p> " A only platform for fast and secure chatting. "</p>
+            <p> " The only platform for fast and secure chatting. "</p>
         </div>
       </div>
     </Component>

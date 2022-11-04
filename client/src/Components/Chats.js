@@ -3,14 +3,21 @@ import styled from 'styled-components';
 import Wrapper from '../Screens/Wrapper';
 import { useParams } from 'react-router-dom';
 import {useGetSingleUserQuery} from "../Store/Services/UserServices";
+import {useGetUserChatQuery} from "../Store/Services/ChatServices";
 
 
 const Chats = () => {
 
     let {id} = useParams();
 
+    // getting sender details 
+    const senderData = localStorage.getItem("sender");
+    const sender = JSON.parse(senderData);
     // getting user details 
-    const {data=[], isFetching} = useGetSingleUserQuery(id);
+    //const {data=[], isFetching} = useGetSingleUserQuery(id);
+
+    const {data= [], isFetching} = useGetUserChatQuery({sender : sender._id, receiver : id});
+    //console.log(data);
 
   const Container = styled.section`
   
@@ -62,81 +69,11 @@ const Chats = () => {
     <Wrapper>
         <Container>
             <div className='chats-section'>
-                <div className='reveived-messages'>
-                    <h4>Hii .... ??</h4>
-                </div>
-
-                <div className='send-messages'>
-                    <h4>Are you okk today ??</h4>
-                </div>
-
-                <div className='reveived-messages'>
-                    <h4>Lorem Ipsum Is a dummy text used by designers ??</h4>
-                </div>
-
-                <div className='send-messages'>
-                    <h4>Hello ! How are you??</h4>
-                </div>
-                <div className='reveived-messages'>
-                    <h4>Hii .... ??</h4>
-                </div>
-
-                <div className='send-messages'>
-                    <h4>Are you okk today ??</h4>
-                </div>
-
-                <div className='reveived-messages'>
-                    <h4>Lorem Ipsum Is a dummy text used by designers ??</h4>
-                </div>
-
-                <div className='send-messages'>
-                    <h4>Hello ! How are you??</h4>
-                </div>
-                <div className='reveived-messages'>
-                    <h4>Hii .... ??</h4>
-                </div>
-
-                <div className='send-messages'>
-                    <h4>Are you okk today ??</h4>
-                </div>
-
-                <div className='reveived-messages'>
-                    <h4>Lorem Ipsum Is a dummy text used by designers ??</h4>
-                </div>
-
-                <div className='send-messages'>
-                    <h4>Hello ! How are you??</h4>
-                </div>
-                <div className='reveived-messages'>
-                    <h4>Hii .... ??</h4>
-                </div>
-
-                <div className='send-messages'>
-                    <h4>Are you okk today ??</h4>
-                </div>
-
-                <div className='reveived-messages'>
-                    <h4>Lorem Ipsum Is a dummy text used by designers ??</h4>
-                </div>
-
-                <div className='send-messages'>
-                    <h4>Hello ! How are you??</h4>
-                </div>
-                <div className='reveived-messages'>
-                    <h4>Hii .... ??</h4>
-                </div>
-
-                <div className='send-messages'>
-                    <h4>Are you okk today ??</h4>
-                </div>
-
-                <div className='reveived-messages'>
-                    <h4>Lorem Ipsum Is a dummy text used by designers ??</h4>
-                </div>
-
-                <div className='send-messages'>
-                    <h4>Hello ! How are you??</h4>
-                </div>
+                { isFetching ? "Loading" : data.chats.map((msg)=>
+                    (
+                        msg.send_by != id ? <div className='send-messages'><h4>{msg.message}</h4></div> :<div className='reveived-messages'><h4>{msg.message}</h4></div>
+                    )               
+                )}
             </div>
         </Container>
     </Wrapper>

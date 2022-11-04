@@ -1,9 +1,16 @@
 import React from 'react';
 import styled from 'styled-components';
 import {BsSearch} from "react-icons/bs";
+import { useParams } from 'react-router-dom';
+import {useGetSingleUserQuery} from "../Store/Services/UserServices";
 
 
 const Header = () => {
+
+    let {id} = useParams();
+
+    const {data=[], isFetching} = useGetSingleUserQuery(id);
+  
     const Wrapper = styled.div`
 
     .header-section{
@@ -49,7 +56,7 @@ const Header = () => {
       <div className='header-section'>
         <div className='image-section'>
           <img src="https://www.guamhomesforsaleandrent.com/sites/default/files/team10.jpg" />
-          <h2> Suhani Sharma </h2>
+          <h2> {isFetching ? "Loading.." : data.user.name} </h2>
         </div>
 
         <div className='name-section'>

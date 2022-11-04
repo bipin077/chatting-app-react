@@ -3,7 +3,7 @@ const env = require("./envconfig");
 
 const connect = () =>
 {
-    mongoose.connect(env.DB_URL, { useNewUrlParser: true, useUnifiedTopology: true }).then(()=>
+    mongoose.connect(env.DB_URL).then(()=>
     {
         console.log("Database Connected Successfully.");
     }).catch((error)=>

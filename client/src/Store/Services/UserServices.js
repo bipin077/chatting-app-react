@@ -43,7 +43,7 @@ const UserServices = createApi({
                 {
                     return {
                         method : "GET",
-                        url : `users/${id}`,
+                        url : `user/${id}`,
                     }
                 }, providesTags : ['users']
             })

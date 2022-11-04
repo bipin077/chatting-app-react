@@ -16,7 +16,8 @@ const App = () =>
             green : "#06283D",
             lightGreen : "#256D85",
             light : "#f3f3f3",
-            chatReceiver : "#3989bb"
+            chatReceiver : "#3989bb",
+            sidebarBottom : "#064064"
         }
     }
 

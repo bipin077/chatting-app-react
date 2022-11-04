@@ -57,6 +57,7 @@ const People = ({name, phone, id}) => {
     <Wrapper>
     { 
         sender._id == id ? 
+        <Link to="/" >
             <div className='people'>   
                 <div className='image-section'>
                 <img src="https://www.guamhomesforsaleandrent.com/sites/default/files/team10.jpg" />
@@ -66,8 +67,9 @@ const People = ({name, phone, id}) => {
                     <p>{phone}</p>
                 </div>
             </div>
+        </Link> 
         : 
-        <Link to={`/chats/${id}`} >
+        <Link to={`/chats/${id}`} >s
             <div className='people'>   
                 <div className='image-section'>
                 <img src="https://www.guamhomesforsaleandrent.com/sites/default/files/team10.jpg" />

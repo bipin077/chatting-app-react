@@ -15,9 +15,9 @@ const Register = () => {
   const navigate = useNavigate();
   
   const [registerUser, response, isLoading] = useRegisterUserMutation();
-  //console.log(response);
+  console.log(response);
 
-  const errors = response?.error?.data?.error ? response?.error?.data?.error : '';
+  const errors = response?.error?.data?.errors ? response?.error?.data?.errors : '';
 
   const [state, setState] = useState({
     name : '',
@@ -66,7 +66,7 @@ const Register = () => {
                   { response.isError && errors.map((error)=>
                     
                       <div className="input_field col-6 error">
-                        <h2>{ error.errors }</h2>
+                        <h2>{ error.msg }</h2>
                       </div>
 
                     )}

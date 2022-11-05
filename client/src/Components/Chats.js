@@ -18,6 +18,7 @@ const Chats = () => {
 
   const { data = [], isFetching } = useGetUserChatQuery({ sender: sender._id, receiver: id });
   // console.log(data);
+  
 
   return (
     <Wrapper>

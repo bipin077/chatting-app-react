@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import People from './People';
 import { useGetAllUsersQuery, useSetUserOfflineMutation } from '../Store/Services/UserServices';
@@ -38,10 +38,6 @@ const Sidebar = () => {
         navigate("/login");
       }
     }
-
-
-
-
 
   return (
     <Wrapper>

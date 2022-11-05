@@ -1,3 +1,4 @@
+import React, {useEffect} from "react";
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import { ThemeProvider } from "styled-components";
 import Chats from "./Components/Chats";
@@ -26,7 +27,7 @@ const App = () =>
             mobile : "480px",
             tablet : "768px",
             laptop : "1023px",
-            desktop : '1200px',
+            desktop : "1200px",
             exlg : "1201px"
         }
     }

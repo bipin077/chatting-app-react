@@ -25,6 +25,7 @@ const Profile = () => {
     //console.log(data);
 
     const [updateData, response] = useUpdateDetailsMutation();
+    console.log(response);
     const errors = response?.error?.data?.errors ? response?.error?.data?.errors : '';
 
     useEffect(() =>
@@ -39,6 +40,7 @@ const Profile = () => {
     {
         if(response.isSuccess)
         {
+            localStorage.setItem("sender", JSON.stringify(response?.data?.user));
             swal("Good job!", response?.data?.msg, "success");
             //alert(response?.data?.msg);
             navigate("/");

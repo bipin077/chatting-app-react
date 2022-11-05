@@ -164,8 +164,8 @@ module.exports.updateUserDetails = async (req, res) =>
             const user = await userModel.findOne({ _id : userId });
             if(user)
             {
-                await userModel.findOneAndUpdate({_id : userId}, {$set : { name, phone, email, avatar} })
-                return res.status(200).json({msg : "Details Updated Successfully."}); 
+                const user = await userModel.findOneAndUpdate({_id : userId}, {$set : { name, phone, email, avatar} }, { returnOriginal: false })
+                return res.status(200).json({msg : "Details Updated Successfully.", user}); 
             }
             else
             {

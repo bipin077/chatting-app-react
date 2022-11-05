@@ -4,6 +4,7 @@ import Chats from "./Components/Chats";
 import { GlobalStyle } from "./GlobalStyles";
 import PrivateRoutes from "./PrivateRoutes";
 import PublicRoutes from "./PublicRoutes";
+import Contact from "./Screens/Contact";
 import Dashboard from "./Screens/Dashboard";
 import Login from "./Screens/Login";
 import Profile from "./Screens/Profile";
@@ -38,6 +39,7 @@ const App = () =>
                     <Route path="/" element={ <PrivateRoutes><Dashboard /></PrivateRoutes> } />
                     <Route path="/profile" element={ <PrivateRoutes><Profile /></PrivateRoutes> } />
                     <Route path="/settings" element={ <PrivateRoutes><Settings /></PrivateRoutes> } />
+                    <Route path="/contact" element={ <PrivateRoutes><Contact /></PrivateRoutes> } />
                     <Route path="/chats/:id" element={ <PrivateRoutes><Chats /></PrivateRoutes>} />
                     <Route path="/login" element={ <PublicRoutes><Login /></PublicRoutes> } />
                     <Route path="/register" element={<PublicRoutes><Register /></PublicRoutes> } />

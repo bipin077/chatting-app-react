@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import People from './People';
 import { useGetAllUsersQuery, useSetUserOfflineMutation } from '../Store/Services/UserServices';
 import {AiOutlineSetting, AiOutlineUser, AiOutlineLogout} from "react-icons/ai";
+import {BiSupport} from "react-icons/bi";
 import { useDispatch } from 'react-redux';
 import {logout} from "../Store/Reducers/AuthReducer";
 import { Link, useNavigate } from 'react-router-dom';
@@ -58,6 +59,7 @@ const Sidebar = () => {
             </div>
             <div className='bottom-bar'> 
                 <div className='icons'>
+                      <Link to="/contact"><BiSupport  className="bottom-icons"/></Link>
                       <Link to="/settings"><AiOutlineSetting  className="bottom-icons"/></Link>
                       <Link to="/profile"><AiOutlineUser className="bottom-icons" /></Link>
                       <AiOutlineLogout onClick={logoutUser} className="bottom-icons" />
@@ -121,7 +123,7 @@ const Wrapper = styled.section`
 
 .side-bar .bottom-bar .icons .bottom-icons{
     font-size : 18px;
-    margin-left : 40px;
+    margin-left : 30px;
     cursor : pointer;
     color : ${({theme})=>theme.colors.light};
     height : 40px;

@@ -71,6 +71,46 @@ const Wrapper = styled.div`
       margin-right : 30px;
   }
 
+@media only screen and (max-width : ${({ theme }) => theme.media.mobile})
+{
+      .header-section {
+          height: 45px;
+          padding-left: 30px;
+      }
+}
+
+@media only screen and (max-width : ${({ theme }) => theme.media.tablet})
+{
+    .header-section {
+        height: 45px;
+        padding-left: 30px;
+    }
+}
+  
+@media only screen and (max-width : ${({ theme }) => theme.media.laptop})
+{
+    .header-section {
+        height: 45px;
+        padding-left: 30px;
+    }
+}
+   
+@media only screen and (max-width : ${({ theme }) => theme.media.desktop})
+{
+  .header-section {
+    height: 45px;
+    padding-left: 30px;
+}
+}
+
+@media only screen and (max-width : ${({ theme }) => theme.media.exlg})
+{
+  .header-section {
+    height: 45px;
+    padding-left: 30px;
+}
+}
+
 `
 
 export default Header

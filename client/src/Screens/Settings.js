@@ -167,6 +167,55 @@ const Component = styled.section`
     color : ${({theme})=>theme.colors.light};
     padding : 5px 15px;
 }
+
+
+@media only screen and (max-width : ${({ theme }) => theme.media.mobile})
+{
+      .container .right-section {
+          padding: 15px;
+      }
+
+      .container .right-section .right-container h2 {
+          font-size: 22px;
+      }
+}
+
+@media only screen and (max-width : ${({ theme }) => theme.media.tablet})
+{
+      .container .right-section {
+          padding: 15px;
+      }
+
+      .container .right-section .right-container h2 {
+          font-size: 22px;
+      }
+}
+  
+@media only screen and (max-width : ${({ theme }) => theme.media.laptop})
+{
+    .container .right-section {
+          padding: 15px;
+      }
+
+      .container .right-section .right-container h2 {
+          font-size: 22px;
+      }
+}
+   
+@media only screen and (max-width : ${({ theme }) => theme.media.desktop})
+{
+      .container .right-section {
+          padding: 25px;
+      }
+
+      .container .right-section .right-container h2 {
+          font-size: 22px;
+      }
+}
+
+
+
+
   
   `
 

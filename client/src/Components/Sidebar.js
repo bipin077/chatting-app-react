@@ -56,7 +56,7 @@ const Sidebar = () => {
                     <People key={key} isOnline={user.isOnline} name={user.name} phone={user.phone} avatar={user.avatar} id={user._id} />
                 )}            
             </div>
-            <div className='bottom-bar'>
+            <div className='bottom-bar'> 
                 <div className='icons'>
                       <Link to="/settings"><AiOutlineSetting  className="bottom-icons"/></Link>
                       <Link to="/profile"><AiOutlineUser className="bottom-icons" /></Link>
@@ -71,7 +71,7 @@ const Sidebar = () => {
 const Wrapper = styled.section`
     
 .side-bar{
-    height : 100vh;
+
     background : ${({theme})=> theme.colors.green};
     position :relative;
 }
@@ -90,11 +90,10 @@ const Wrapper = styled.section`
 }
 
 .peoples {
-  margin-top : 10px;
   padding : 10px;
-  height:80vh;
+  height:89vh;
   overflow-y : auto;
-  margin-bottom : 200px;
+  padding-bottom: 50px;
 }
 
 .peoples h3{
@@ -136,6 +135,113 @@ const Wrapper = styled.section`
   padding : 10px;
   font-size : 24px;
 }
+}
+
+
+
+@media only screen and (max-width : ${({ theme }) => theme.media.tablet})
+{
+
+      .side-bar .logo{
+          width: 130px;
+          margin-left : 5px;
+          padding: 10px;
+      }
+
+      .side-bar .bottom-bar{
+          height : 40px;
+      }
+
+      .bottom-bar .icons {
+        display : flex;
+        
+      }
+
+      .side-bar .bottom-bar .icons{
+        margin-right : 2px;
+      }
+
+      .side-bar .bottom-bar .icons .bottom-icons{
+          font-size : 12px;
+          margin-left : 10px;
+          cursor : pointer;
+          color : ${({theme})=>theme.colors.light};
+          height : 30px;
+          width : 30px;
+          padding : 6px;
+      }
+
+}
+
+@media only screen and (max-width : ${({ theme }) => theme.media.mobile})
+{
+
+      .side-bar .logo{
+          width: 100px;
+          margin-left : 18px;
+          text-align : center;
+          padding: 10px;
+      }
+
+      .side-bar .bottom-bar{
+          height : 40px;
+      }
+
+      .bottom-bar .icons {
+        display : flex;
+        
+      }
+
+      .side-bar .bottom-bar .icons{
+        margin-right : 2px;
+      }
+
+      .side-bar .bottom-bar .icons .bottom-icons{
+          font-size : 12px;
+          margin-left : 4px;
+          cursor : pointer;
+          color : ${({theme})=>theme.colors.light};
+          height : 30px;
+          width : 30px;
+          padding : 6px;
+      }
+}
+
+
+@media only screen and (max-width : ${({ theme }) => theme.media.laptop})
+{
+
+      .side-bar .logo{
+          width: 140px;
+          margin-left : 24px;
+          text-align : center;
+          padding: 10px;
+      }
+
+      .side-bar .bottom-bar{
+          height : 40px;
+      }
+
+      .bottom-bar .icons {
+        display : flex;
+        
+      }
+
+      .side-bar .bottom-bar .icons{
+        margin-right : 2px;
+      }
+
+      .side-bar .bottom-bar .icons .bottom-icons{
+          font-size : 12px;
+          margin-left : 4px;
+          cursor : pointer;
+          color : ${({theme})=>theme.colors.light};
+          height : 30px;
+          width : 30px;
+          padding : 6px;
+      }
+}
+
 
 
 

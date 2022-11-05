@@ -64,7 +64,7 @@ const Profile = () => {
                 <div className="left-section">
                     <Sidebar />
                 </div>
-                <div className="right-section">
+                <div className="right-section"> 
                     <div className="right-container">
                         <h2> Manage Your Profile</h2>
                         <form className='profile-form' onSubmit={formSubmitHandler}>
@@ -222,6 +222,154 @@ const Component = styled.section`
     color : ${({ theme }) => theme.colors.light};
     padding : 5px 15px;
 }
+
+
+@media only screen and (max-width : ${({ theme }) => theme.media.mobile})
+{
+  
+        .container .right-section {
+            padding : 10px;
+        }
+
+        .container .right-section .right-container h2 {
+            font-size: 22px;
+        }
+
+        .profile-form .form-group .form-bottom-section
+        {
+            display: flex;
+            flex-wrap : wrap;
+            flex-direction: column;
+        }
+
+        .profile-form .form-group .form-bottom-section .avtar-section {
+            display: flex;
+            flex-wrap : wrap;
+            flex-direction: row;
+        }
+
+        .profile-form .form-group .form-bottom-section .submit-section
+        {
+            margin-top : 30px !important;
+        }
+
+        .profile-form .form-group .form-bottom-section .submit-section button
+        {
+            padding : 5px 20px;
+        }
+}
+
+@media only screen and (max-width : ${({ theme }) => theme.media.tablet})
+{
+    .container .right-section {
+        padding : 10px;
+    }
+
+    .container .right-section .right-container h2 {
+        font-size: 25px;
+    }
+
+    .profile-form .form-group .form-bottom-section
+    {
+        display: flex;
+        flex-wrap : wrap;
+        flex-direction: column;
+    }
+
+    .profile-form .form-group .form-bottom-section .avtar-section {
+        display: flex;
+        flex-wrap : wrap;
+        flex-direction: row;
+    }
+
+    .profile-form .form-group .form-bottom-section .submit-section
+    {
+        margin-top : 30px !important;
+    }
+
+    .profile-form .form-group .form-bottom-section .submit-section button
+    {
+        padding : 5px 20px;
+    }
+}
+  
+@media only screen and (max-width : ${({ theme }) => theme.media.laptop})
+{
+    .container .right-section {
+        padding : 10px;
+    }
+
+    .container .right-section .right-container h2 {
+        font-size: 25px;
+    }
+
+    .profile-form .form-group .form-bottom-section
+    {
+        display: flex;
+        flex-wrap : wrap;
+        flex-direction: column;
+    }
+
+    .profile-form .form-group .form-bottom-section .avtar-section {
+        display: flex;
+        flex-wrap : wrap;
+        flex-direction: row;
+    }
+
+    .profile-form .form-group .form-bottom-section .submit-section
+    {
+        margin-top : 30px !important;
+    }
+
+    .profile-form .form-group .form-bottom-section .submit-section button
+    {
+        padding : 5px 20px;
+    }
+}
+   
+@media only screen and (max-width : ${({ theme }) => theme.media.desktop})
+{
+    .container .right-section {
+        padding : 20px;
+    }
+
+    .container .right-section .right-container h2 {
+        font-size: 25px;
+        margin-top : 10px;
+        margin-left : 10px;
+    }
+
+    .profile-form .form-group .form-bottom-section
+    {
+        display: flex;
+        flex-wrap : wrap;
+        flex-direction: column;
+    }
+
+    .profile-form .form-group .form-bottom-section .avtar-section {
+        display: flex;
+        flex-wrap : wrap;
+        flex-direction: row;
+    }
+
+    .profile-form .form-group .form-bottom-section .submit-section
+    {
+        margin-top : 30px !important;
+    }
+
+    .profile-form .form-group .form-bottom-section .submit-section button
+    {
+        padding : 5px 20px;
+    }
+}
+
+@media only screen and (max-width : ${({ theme }) => theme.media.exlg})
+{
+    
+}
+
+
+
   
   `
 

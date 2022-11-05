@@ -49,6 +49,71 @@ const Container = styled.section`
   width : 100%;
   height : 79vh;
 }
+
+@media only screen and (max-width : ${({ theme }) => theme.media.mobile})
+{
+    .container .left-section
+    {
+      width : 25%;
+      height : 100vh;
+    }
+
+    .container .right-section
+    {
+      width : 75%;
+      height : 100vh;
+    }
+}
+
+@media only screen and (max-width : ${({ theme }) => theme.media.tablet})
+{
+  .container .left-section
+  {
+    width : 25%;
+    height : 100vh;
+  }
+
+  .container .right-section
+  {
+    width : 75%;
+    height : 100vh;
+  }
+}
+  
+@media only screen and (max-width : ${({ theme }) => theme.media.laptop})
+{
+  .container .left-section
+  {
+    width : 25%;
+    height : 100vh;
+  }
+
+  .container .right-section
+  {
+    width : 75%;
+    height : 100vh;
+  }
+}
+   
+@media only screen and (max-width : ${({ theme }) => theme.media.desktop})
+{
+  .container .left-section
+  {
+    width : 25%;
+    height : 100vh;
+  }
+
+  .container .right-section
+  {
+    width : 75%;
+    height : 100vh;
+  }
+}
+
+@media only screen and (max-width : ${({ theme }) => theme.media.exlg})
+{
+    
+}
  
 `;
 

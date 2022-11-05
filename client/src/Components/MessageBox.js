@@ -257,6 +257,157 @@ height: 14vh;
 }
 
 
+@media only screen and (max-width : ${({ theme }) => theme.media.mobile})
+{
+
+    .message {
+      padding: 20px;
+      margin: 5px 10px;
+    }
+    .emojy {
+        margin-right: 20px;
+        font-size: 24px;
+    }
+
+    .message input {
+      font-size: 12px;
+      width: 90%;
+    }
+
+    .emojies {
+      bottom: 67px;
+      left: 31%;
+      width: 244px;
+      height: 120px;
+    }
+
+    .emojies .close-emoji {
+      top: -16px;
+      right: -18px;
+      font-size: 10px;
+      padding: 9px;
+    }
+
+    .emojies .emoji-container {
+        padding: 12px;
+        height: 110px;
+    }
+}
+
+@media only screen and (max-width : ${({ theme }) => theme.media.tablet})
+{
+  .message {
+    padding: 20px;
+    margin: 5px 10px;
+  }
+  .emojy {
+      margin-right: 20px;
+      font-size: 24px;
+  }
+
+  .message input {
+    font-size: 12px;
+    width: 90%;
+  }
+
+  .emojies {
+    bottom: 67px;
+    left: 38%;
+    width: 305px;
+    height: 120px;
+  }
+
+  .emojies .close-emoji {
+    top: -16px;
+    right: -18px;
+    font-size: 10px;
+    padding: 9px;
+  }
+
+  .emojies .emoji-container {
+      padding: 12px;
+      height: 110px;
+  }
+}
+  
+@media only screen and (max-width : ${({ theme }) => theme.media.laptop})
+{
+  .message {
+    padding: 20px;
+    margin: 5px 10px;
+  }
+  .emojy {
+      margin-right: 20px;
+      font-size: 24px;
+  }
+
+  .message input {
+    font-size: 12px;
+    width: 90%;
+  }
+
+  .emojies {
+    bottom: 67px;
+    left: 37%;
+    width: 464px;
+    height: 120px;
+  }
+
+  .emojies .close-emoji {
+    top: -16px;
+    right: -18px;
+    font-size: 10px;
+    padding: 9px;
+  }
+
+  .emojies .emoji-container {
+      padding: 12px;
+      height: 110px;
+  }
+}
+   
+@media only screen and (max-width : ${({ theme }) => theme.media.desktop})
+{
+  .message {
+    padding: 20px;
+    margin: 5px 10px;
+  }
+  .emojy {
+      margin-right: 20px;
+      font-size: 24px;
+  }
+
+  .message input {
+    font-size: 12px;
+    width: 90%;
+  }
+
+  .emojies {
+    bottom: 80px;
+    left: 37%;
+    width: 464px;
+    height: 120px;
+  }
+
+  .emojies .close-emoji {
+    top: -16px;
+    right: -18px;
+    font-size: 10px;
+    padding: 9px;
+  }
+
+  .emojies .emoji-container {
+      padding: 12px;
+      height: 110px;
+  }
+}
+
+@media only screen and (max-width : ${({ theme }) => theme.media.exlg})
+{
+    
+}
+
+
 `;
 
 

@@ -112,6 +112,104 @@ a{
     color : red;
 }
 
+@media only screen and (max-width : ${({ theme }) => theme.media.mobile})
+{
+
+    .people {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding : 10px;
+        text-align : center;
+    }
+
+    .people .details-section {
+        padding-left: 5px;
+    }
+
+    .people .details-section h2 {
+        font-size: 12px;
+    }
+
+
+    .people .details-section p {
+        font-size: 10px;
+    }
+
+    .people .icons {
+        top: -3%;
+        right: -3px;
+    }
+}
+
+@media only screen and (max-width : ${({ theme }) => theme.media.tablet})
+{
+    .people {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding : 10px;
+        text-align : center;
+    }
+
+    .people .details-section {
+        padding-left: 5px;
+    }
+
+    .people .details-section h2 {
+        font-size: 13px;
+    }
+
+
+    .people .details-section p {
+        font-size: 11px;
+    }
+
+    .people .icons {
+        top: -3%;
+        right: -3px;
+    }
+}
+  
+@media only screen and (max-width : ${({ theme }) => theme.media.laptop})
+{
+    .people {
+        padding: 0px 0px;
+        margin-top: 8px;
+        position: relative;
+    }
+
+    .people .details-section {
+        padding-left: 15px;
+    }
+
+    .people .details-section h2 {
+        font-size: 15px;
+    }
+
+    .people .details-section p {
+        font-size: 12px;
+    }
+
+    .people .icons {
+        top: -15%;
+        left: -9px;
+    }    
+}
+   
+@media only screen and (max-width : ${({ theme }) => theme.media.desktop})
+{
+    .people .icons {
+        top: -14%;
+        left: -9px;
+    }
+}
+
+
+
+
 `
 
 export default People;

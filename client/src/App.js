@@ -20,6 +20,13 @@ const App = () =>
             light : "#f3f3f3",
             chatReceiver : "#3989bb",
             sidebarBottom : "#064064"
+        },
+        media : {
+            mobile : "480px",
+            tablet : "768px",
+            laptop : "1023px",
+            desktop : '1200px',
+            exlg : "1201px"
         }
     }
 

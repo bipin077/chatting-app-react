@@ -66,10 +66,28 @@ const UserServices = createApi({
                         body : data
                     }
                 }, invalidatesTags : ['users']
+            }),
+            setUserOnline : builder.mutation({
+                query : (id) =>
+                {
+                    return {
+                        method : "PUT",
+                        url : `setOnline/${id}`
+                    }
+                }, invalidatesTags : ['users']
+            }),
+            setUserOffline : builder.mutation({
+                query : (id) =>
+                {
+                    return {
+                        method : "PUT",
+                        url : `setOffline/${id}`
+                    }
+                }, invalidatesTags : ['users']
             })
         }
     }
 })
 
-export const { useUpdateDetailsMutation, useRegisterUserMutation, useLoginUserMutation, useGetAllUsersQuery, useGetSingleUserQuery, useUpdatePasswordMutation} = UserServices;
+export const { useSetUserOfflineMutation ,useSetUserOnlineMutation ,useUpdateDetailsMutation, useRegisterUserMutation, useLoginUserMutation, useGetAllUsersQuery, useGetSingleUserQuery, useUpdatePasswordMutation} = UserServices;
 export default UserServices;

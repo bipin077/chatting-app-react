@@ -3,11 +3,12 @@ import styled from 'styled-components';
 import Sidebar from '../Components/Sidebar';
 import {useUpdatePasswordMutation} from "../Store/Services/UserServices";
 import { useNavigate } from 'react-router-dom';
+import swal from 'sweetalert';
 
 const Settings = () => {
 
-    const [changePassword, response, isLoading] = useUpdatePasswordMutation();
-    console.log(response);
+    const [changePassword, response] = useUpdatePasswordMutation();
+    //console.log(response);
 
     const navigate = useNavigate();
 
@@ -39,7 +40,8 @@ const Settings = () => {
     {
         if(response.isSuccess)
         {
-            alert(response?.data?.msg);
+            //alert(response?.data?.msg);
+            swal("Good job!", response?.data?.msg, "success");
             navigate("/");
         } 
     }, [response.isSuccess])

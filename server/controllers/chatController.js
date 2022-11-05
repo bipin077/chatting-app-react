@@ -26,11 +26,10 @@ module.exports.chatting = async (req, res) =>
 module.exports.getAllChats= async (req, res) =>
 {
     const {sender, receiver} = req.params;
-    // console.log("sender : "+sender);
-    // console.log("receiver : "+receiver);
     try 
     {
-       const chats = await chatModel.find({sender, receiver});
+       //const chats = await chatModel.find({sender, receiver});
+       const chats = await chatModel.find( { $or: [ { sender: sender, receiver : receiver },{ sender: receiver, receiver : sender } ] } );
        return res.status(200).json({chats});
     } 
     catch (error) {

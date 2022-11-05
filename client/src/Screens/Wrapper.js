@@ -5,33 +5,7 @@ import MessageBox from "../Components/MessageBox";
 import Sidebar from "../Components/Sidebar";
 
 const Wrapper = ({ children }) => {
-  const Container = styled.section`
 
-  .container
-  {
-      display: flex;
-      flex-direction : row;
-  }
-
-  .container .left-section
-  {
-    width : 25%;
-  }
-
-  .container .right-section
-  {
-    width : 75%;
-  }
-
-  .container .message-box{
-    display :flex;
-    justify-content : space-between;
-    background : ${({theme})=>theme.colors.light};
-    width : 100%;
-    height : 79vh;
-  }
-   
-  `;
   return (
     <Container>
       <div className="container">
@@ -49,5 +23,33 @@ const Wrapper = ({ children }) => {
     </Container>
   );
 };
+
+const Container = styled.section`
+
+.container
+{
+    display: flex;
+    flex-direction : row;
+}
+
+.container .left-section
+{
+  width : 25%;
+}
+
+.container .right-section
+{
+  width : 75%;
+}
+
+.container .message-box{
+  display :flex;
+  justify-content : space-between;
+  background : ${({theme})=>theme.colors.light};
+  width : 100%;
+  height : 79vh;
+}
+ 
+`;
 
 export default Wrapper;

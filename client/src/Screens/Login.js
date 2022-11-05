@@ -3,8 +3,8 @@ import styled from "styled-components";
 import {BiEnvelopeOpen} from "react-icons/bi";
 import {MdOutlinePassword} from "react-icons/md";
 
-import { useLoginUserMutation } from "../Store/Services/UserServices";
-import { useNavigate } from "react-router-dom";
+import { useLoginUserMutation, useSetUserOnlineMutation } from "../Store/Services/UserServices";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {setAdminToken} from "../Store/Reducers/AuthReducer";
 import {addSenderDetails} from "../Store/Reducers/UserReducer";
@@ -14,8 +14,9 @@ const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   
-  const [loginUser, response, isLoading] = useLoginUserMutation();
-  console.log(response);
+  const [loginUser, response] = useLoginUserMutation();
+  const [onlineUser, resp] = useSetUserOnlineMutation();
+  console.log(resp);
 
   const errors = response?.error?.data?.errors ? response?.error?.data?.errors : '';
 
@@ -42,10 +43,12 @@ const Login = () => {
       {
           const admin_token = response?.data?.token ? response?.data?.token : '';
           const sender = response?.data?.user ? response?.data?.user : ''; 
+          const userId = response?.data?.user ? response?.data?.user?._id : ''; 
           localStorage.setItem("admin-token", admin_token);
           localStorage.setItem("sender", JSON.stringify(sender));
           dispatch(setAdminToken(admin_token));
-          dispatch(addSenderDetails(sender))
+          dispatch(addSenderDetails(sender));
+          onlineUser(userId);
           navigate("/");
       }
   }, [response?.isSuccess])
@@ -83,6 +86,7 @@ const Login = () => {
 
                 <input className="button btn-form" type="submit" value="Login" name="submit" />
               </form>
+              <Link className="link" to="/register">Create New Account?</Link>
             </div>
           </div>
         </div>
@@ -93,6 +97,11 @@ const Login = () => {
 
 const Wrapper = styled.section`
 
+.link{
+  font-size : 15px;
+  text-decoration : none;
+  color : ${({theme})=>theme.colors.light};
+}
 
 .icon {
     font-size : 18px;

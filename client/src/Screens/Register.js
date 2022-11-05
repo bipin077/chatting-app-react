@@ -4,7 +4,7 @@ import {BiLockOpenAlt, BiEnvelopeOpen} from "react-icons/bi";
 import {BsFillPhoneVibrateFill} from "react-icons/bs";
 import {MdOutlinePassword} from "react-icons/md";
 import { useRegisterUserMutation } from "../Store/Services/UserServices";
-import { useNavigate } from "react-router-dom";
+import { useNavigate , Link} from "react-router-dom";
 import { useDispatch } from "react-redux";
 import {setAdminToken} from "../Store/Reducers/AuthReducer";
 import {addSenderDetails} from "../Store/Reducers/UserReducer";
@@ -15,7 +15,7 @@ const Register = () => {
   const navigate = useNavigate();
   
   const [registerUser, response, isLoading] = useRegisterUserMutation();
-  console.log(response);
+  //console.log(response);
 
   const errors = response?.error?.data?.error ? response?.error?.data?.error : '';
 
@@ -94,6 +94,7 @@ const Register = () => {
 
                 <input className="button btn-form" type="submit" value="Register Now" name="submit" />
               </form>
+              <Link className="link" to="/login">Already Has Account?</Link>
             </div>
           </div>
         </div>
@@ -105,6 +106,11 @@ const Register = () => {
 
 const Wrapper = styled.section`
 
+.link{
+  font-size : 15px;
+  text-decoration : none;
+  color : ${({theme})=>theme.colors.light};
+}
 
 .icon {
     font-size : 18px;

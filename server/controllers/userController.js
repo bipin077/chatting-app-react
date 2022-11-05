@@ -86,7 +86,7 @@ module.exports.getAllUsers = async (req, res) =>
     const {id} = req.params;
     try 
     {
-        const users = await userModel.find({_id : { $ne : id }});
+        const users = await userModel.find({_id : { $ne : id }}).sort({isOnline: -1});
         return res.status(200).json({users});
     } 
     catch (error) {
@@ -164,7 +164,7 @@ module.exports.updateUserDetails = async (req, res) =>
             const user = await userModel.findOne({ _id : userId });
             if(user)
             {
-                await userModel.updateOne({_id : userId}, {$set : { name, phone, email, avatar} })
+                await userModel.findOneAndUpdate({_id : userId}, {$set : { name, phone, email, avatar} })
                 return res.status(200).json({msg : "Details Updated Successfully."}); 
             }
             else
@@ -182,4 +182,48 @@ module.exports.updateUserDetails = async (req, res) =>
         return res.status(501).json({errors : errors.array()});
     }
 }
+
+module.exports.setOnline = async (req, res) =>
+{
+    const { id }= req.params;
+    try 
+    {
+        const user = await userModel.findOne({ _id : id });
+        if(user)
+        {
+            await userModel.findOneAndUpdate({_id : id}, {$set : { isOnline : true } })
+            return res.status(200).json({msg : "User Is Online."}); 
+        }
+        else
+        {
+            return res.status(501).json({errors : [{ msg : " User not found! "}]});
+        }
+    } 
+    catch (error) {
+        return res.status(501).json({errors : error});
+    }
+}
+
+module.exports.setOffline = async (req, res) =>
+{
+    const { id }= req.params;
+    try 
+    {
+        const user = await userModel.findOne({ _id : id });
+        if(user)
+        {
+            await userModel.findOneAndUpdate({_id : id}, {$set : { isOnline : false } })
+            return res.status(200).json({msg : "User Is Offline."}); 
+        }
+        else
+        {
+            return res.status(501).json({errors : [{ msg : " User not found! "}]});
+        }
+    } 
+    catch (error) {
+        return res.status(501).json({errors : error});
+    }
+}
+
+
 

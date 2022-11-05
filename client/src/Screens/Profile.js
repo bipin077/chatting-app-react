@@ -4,6 +4,7 @@ import Avtar from '../Components/Avtar';
 import Sidebar from '../Components/Sidebar';
 import { useNavigate } from 'react-router-dom';
 import {useGetSingleUserQuery, useUpdateDetailsMutation} from "../Store/Services/UserServices";
+import swal from 'sweetalert';
 
 const Profile = () => {
 
@@ -21,7 +22,7 @@ const Profile = () => {
     const sender = JSON.parse(senderData);
 
     const {data=[], isFetching} = useGetSingleUserQuery(sender._id);
-    console.log(data);
+    //console.log(data);
 
     const [updateData, response] = useUpdateDetailsMutation();
     const errors = response?.error?.data?.errors ? response?.error?.data?.errors : '';
@@ -38,7 +39,8 @@ const Profile = () => {
     {
         if(response.isSuccess)
         {
-            alert(response?.data?.msg);
+            swal("Good job!", response?.data?.msg, "success");
+            //alert(response?.data?.msg);
             navigate("/");
         } 
     }, [response.isSuccess])
@@ -96,6 +98,7 @@ const Profile = () => {
                                     <option value="/avtar/avtar3.png">Avatar Three</option>
                                     <option value="/avtar/avtar4.png">Avatar Four</option>
                                     <option value="/avtar/avtar5.png">Avatar Five</option>
+                                    <option value="/avtar/avtar6.png">Avatar Six</option>
                                 </select>
                             </div>
                             <div className='form-group form-bottom'>
@@ -107,6 +110,7 @@ const Profile = () => {
                                         <Avtar image="/avtar/avtar3.png" />
                                         <Avtar image="/avtar/avtar4.png" />
                                         <Avtar image="/avtar/avtar5.png" />
+                                        <Avtar image="/avtar/avtar6.png" />
                                     </div>
                                     <div className='submit-section'>
                                         <button>Update Profile</button>

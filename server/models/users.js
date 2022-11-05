@@ -20,6 +20,10 @@ const userSchema = mongoose.Schema({
     password : {
         type : String,
         required : true
+    },
+    isOnline : {
+        type : Boolean,
+        default : false
     }
 }, { timestamps : true });
 

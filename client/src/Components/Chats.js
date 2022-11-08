@@ -67,7 +67,7 @@ width : 100%;
     padding : 50px;
     overflow-y: auto;
     display: flex;
-    flex-direction: column;
+    flex-direction:column;
     height : 88vh;
     
   }

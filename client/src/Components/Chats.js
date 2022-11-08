@@ -137,8 +137,6 @@ display: block;
 p{
 color : #000;
 }
-
-
 `
 
 export default Chats;

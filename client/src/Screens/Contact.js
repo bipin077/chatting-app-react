@@ -205,7 +205,7 @@ const Component = styled.section`
         }
 }
 
-@media only screen and (max-width : ${({ theme }) => theme.media.tablet})
+@media only screen and (min-width : ${({ theme }) => theme.media.mobile}) and (max-width : ${({ theme }) => theme.media.tablet})
 {
     .container .right-section {
         padding : 10px;
@@ -233,7 +233,7 @@ const Component = styled.section`
     }
 }
   
-@media only screen and (max-width : ${({ theme }) => theme.media.laptop})
+@media only screen and (min-width : ${({ theme }) => theme.media.tablet}) and (max-width : ${({ theme }) => theme.media.laptop})
 {
     .container .right-section {
         padding : 10px;
@@ -267,7 +267,7 @@ const Component = styled.section`
     }
 }
    
-@media only screen and (max-width : ${({ theme }) => theme.media.desktop})
+@media only screen and (min-width : ${({ theme }) => theme.media.laptop}) and (max-width : ${({ theme }) => theme.media.desktop})
 {
     .container .right-section {
         padding : 20px;
@@ -303,7 +303,7 @@ const Component = styled.section`
     }
 }
 
-@media only screen and (max-width : ${({ theme }) => theme.media.exlg})
+@media only screen and (min-width : ${({ theme }) => theme.media.desktop}) and (max-width : ${({ theme }) => theme.media.exlg})
 {
     
 }

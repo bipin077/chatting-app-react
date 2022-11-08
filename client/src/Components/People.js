@@ -143,7 +143,7 @@ a{
     }
 }
 
-@media only screen and (max-width : ${({ theme }) => theme.media.tablet})
+@media only screen and (min-width : ${({ theme }) => theme.media.mobile}) and (max-width : ${({ theme }) => theme.media.tablet})
 {
     .people {
         display: flex;
@@ -173,7 +173,7 @@ a{
     }
 }
   
-@media only screen and (max-width : ${({ theme }) => theme.media.laptop})
+@media only screen and (min-width : ${({ theme }) => theme.media.tablet}) and (max-width : ${({ theme }) => theme.media.laptop})
 {
     .people {
         padding: 0px 0px;
@@ -199,7 +199,7 @@ a{
     }    
 }
    
-@media only screen and (max-width : ${({ theme }) => theme.media.desktop})
+@media only screen and (min-width : ${({ theme }) => theme.media.laptop}) and (max-width : ${({ theme }) => theme.media.desktop})
 {
     .people .icons {
         top: -14%;

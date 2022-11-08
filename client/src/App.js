@@ -21,7 +21,7 @@ const App = () =>
             lightGreen : "#256D85",
             light : "#f3f3f3",
             chatReceiver : "#41124b",
-            sidebarBottom : "#064064"
+            sidebarBottom : "#430e4a"
             
         },
         media : {

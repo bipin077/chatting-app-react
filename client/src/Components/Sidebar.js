@@ -133,12 +133,15 @@ background-color:#3f154c;
 .side-bar .bottom-bar{
     height : 7vh;
     background : ${({ theme }) => theme.colors.sidebarBottom};
-    position : absolute;
+    position : fixed;
     bottom : 0px;
     width : 25%;
    display : flex;
    align-items : center;
    justify-content : center;
+}
+.sc-dkrFOg.gJbEzy:first-child > a > .people {
+  background-color: #450849;
 }
 
 .side-bar .bottom-bar .icons{

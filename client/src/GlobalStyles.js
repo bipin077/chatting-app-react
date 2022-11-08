@@ -25,6 +25,22 @@ body{
     background : ${({theme})=>theme.colors.light};
 }
 
+::-webkit-scrollbar {
+    width: 6px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3); 
+    border-radius: 10px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgb(76 35 35);
+    color: red;
+    background: #41124b;
+}
+
 
 
 

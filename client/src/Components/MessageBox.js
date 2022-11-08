@@ -177,11 +177,21 @@ const MessageBox = () => {
 const Wrapper = styled.div`
 
 
-display: flex;
-justify-content: space-between;
-background: ${({ theme }) => theme.colors.lightGreen};
-width: 100%;
-height: 14vh;
+display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: justify;
+    -webkit-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: flex-start;
+    background: #24052a;
+    width: 100%;
+    height: 12vh;
+    position: fixed;
+    bottom: 0;
+    width: 76%;
+    border-top-left-radius: 40px;
 
 .message {
   width: 100%;
@@ -190,6 +200,7 @@ height: 14vh;
   align-items: center;
   justify-content: center;
 }
+
 
 .message input{
     font-size : 20px;

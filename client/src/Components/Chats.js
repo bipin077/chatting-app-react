@@ -67,24 +67,32 @@ width : 100%;
     padding : 50px;
     overflow-y: auto;
     display: flex;
-    flex-direction: column;
-    height : 75vh;
+    flex-direction:column;
+    height : 88vh;
     
   }
+
+  .chats-section > div {
+    box-shadow: 0px 4px 4px 0px #7474742e;
+}
 
   .chats-section .reveived-messages{
       border : 1px solid ${({ theme }) => theme.colors.green};
       padding : 5px 10px;
       border-radius : 50px;
       margin-top : 5px;
-      background : ${({ theme }) => theme.colors.chatReceiver};
+      background : #5a2d68;
       width: fit-content;
       float : left;
   }
 
   .chats-section .reveived-messages h4{
-      font-size : 18px;
-      color : ${({ theme }) => theme.colors.light};
+    font-size: 16px;
+    color: #f3f3f3;
+    line-height: 16px;
+    padding-bottom: 5px;
+    font-weight: 400;
+    letter-spacing: 1px;
   }
 
   .chats-section .send-messages{
@@ -92,15 +100,22 @@ width : 100%;
     padding : 5px 10px;
     border-radius : 50px;
     margin-top : 5px;
-    background : ${({ theme }) => theme.colors.light};
+    background : #d5d5d5;
     width: fit-content;
     float : right;
     align-self: end;
 }
 
 .chats-section .send-messages h4{
-  font-size : 18px;
-  color : ${({ theme }) => theme.colors.green};
+  color : #323232;
+  padding-bottom: 5px;
+  font-size: 16px;
+  line-height: 16px;
+  font-weight: 400;
+  -webkit-letter-spacing: 1px;
+  -moz-letter-spacing: 1px;
+  -ms-letter-spacing: 1px;
+  letter-spacing: 1px;
 }
 
 .chats-section .three-dots{

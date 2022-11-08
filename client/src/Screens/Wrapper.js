@@ -34,7 +34,7 @@ const Container = styled.section`
 
 .container .left-section
 {
-  width : 25%;
+  width : 24%;
 }
 
 .container .right-section

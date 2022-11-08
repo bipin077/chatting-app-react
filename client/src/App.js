@@ -17,11 +17,12 @@ const App = () =>
 
     const theme = {
         colors : {
-            green : "#06283D",
+            green : "#00000026",
             lightGreen : "#256D85",
             light : "#f3f3f3",
-            chatReceiver : "#3989bb",
+            chatReceiver : "#41124b",
             sidebarBottom : "#064064"
+            
         },
         media : {
             mobile : "480px",

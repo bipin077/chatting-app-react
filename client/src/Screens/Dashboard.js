@@ -12,7 +12,7 @@ const Dashboard = () => {
         </div>
         <div className="right-section">
           <img src="./images/chats.png" />
-          <h2> Let's Chat </h2>
+          <h2> Social Chat </h2>
           <p> " The only platform for fast and secure chatting. "</p>
 
           <span>Reasons why we are <b> No 1 </b> at market?</span>

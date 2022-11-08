@@ -83,7 +83,7 @@ const Wrapper = styled.div`
       }
 }
 
-@media only screen and (max-width : ${({ theme }) => theme.media.tablet})
+@media only screen and (min-width : ${({ theme }) => theme.media.mobile}) and (max-width : ${({ theme }) => theme.media.tablet})
 {
     .header-section {
         height: 45px;
@@ -91,7 +91,7 @@ const Wrapper = styled.div`
     }
 }
   
-@media only screen and (max-width : ${({ theme }) => theme.media.laptop})
+@media only screen and (min-width : ${({ theme }) => theme.media.tablet}) and (max-width : ${({ theme }) => theme.media.laptop})
 {
     .header-section {
         height: 45px;
@@ -99,7 +99,7 @@ const Wrapper = styled.div`
     }
 }
    
-@media only screen and (max-width : ${({ theme }) => theme.media.desktop})
+@media only screen and (min-width : ${({ theme }) => theme.media.laptop}) and (max-width : ${({ theme }) => theme.media.desktop})
 {
   .header-section {
     height: 45px;
@@ -107,7 +107,7 @@ const Wrapper = styled.div`
 }
 }
 
-@media only screen and (max-width : ${({ theme }) => theme.media.exlg})
+@media only screen and (min-width : ${({ theme }) => theme.media.desktop}) and (max-width : ${({ theme }) => theme.media.exlg})
 {
   .header-section {
     height: 45px;

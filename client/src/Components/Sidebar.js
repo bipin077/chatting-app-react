@@ -74,12 +74,12 @@ const Wrapper = styled.section`
     position :relative;
 }
 
-.side-bar .logo{
-  width : 200px;
-  margin : 0px 30px;
-  padding : 15px;
-  text-align : center;
-  border-bottom : 1px solid ${({theme})=>theme.colors.light};
+.side-bar .logo {
+  width: 100%;
+  padding: 8px 100px;
+  text-align: center;
+  border: 7px solid #f3f3f3;
+  box-shadow:inset 0px 0px 9px #818181;
 }
 
 .side-bar .logo img{
@@ -89,7 +89,7 @@ const Wrapper = styled.section`
 
 .peoples {
   padding : 10px;
-  height:89vh;
+  height:84vh;
   overflow-y : auto;
   padding-bottom: 50px;
 }
@@ -102,12 +102,16 @@ const Wrapper = styled.section`
   font-size : 15px;
 }
 
+.sc-dkrFOg.cbYOWx:first-child > a > .people{
+background-color:#3f154c;
+}
+
 .side-bar .bottom-bar{
     height : 7vh;
-    background : ${({theme})=>theme.colors.sidebarBottom};
-    position : absolute;
+    background : #360246;
+    position : fixed;
     bottom : 0px;
-    width : 100%;
+    width : 25%;
    display : flex;
    align-items : center;
    justify-content : center;

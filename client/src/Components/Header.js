@@ -38,10 +38,12 @@ const Wrapper = styled.div`
     display :flex;
     justify-content : space-between;
     align-items : center;
-    background : ${({theme})=>theme.colors.lightGreen};
+    background : #41124b;
     width : 100%;
-    height : 7vh;
+    height : 10vh;
     padding-left : 30px;
+    border-bottom-left-radius: 40px;
+    position:fixed;
 }
     
 
@@ -60,8 +62,10 @@ const Wrapper = styled.div`
       border-radius : 50%;
   }
   .header-section .image-section h2{
-    padding-left : 20px;
-    color : ${({theme})=>theme.colors.light};
+    padding-left: 20px;
+    color: #f3f3f3;
+    font-size: 19px;
+    font-family: monospace;
   }
 
   .header-section .name-section

@@ -17,10 +17,12 @@ const Dashboard = () => {
 
           <span>Reasons why we are <b> No 1 </b> at market?</span>
           <ul>
+    	  <div className='box'>
             <li> We provide end to end authentication.</li>
             <li> User can chat with random person.</li>
             <li> All users data is secured in our server.</li>
             <li> And many more.</li>
+        </div>
           </ul>
         </div>
       </div>
@@ -83,9 +85,11 @@ const Component = styled.section`
 
 .container .right-section ul
 {
-  margin-left: 0px;
-  text-align: center;
-  padding-left: 45px;
+width:100%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
 }
 
 .container .right-section ul li
@@ -93,7 +97,8 @@ const Component = styled.section`
   font-size : 24px;
   padding-top:10px;
   list-style: square inside;
-  tex-align : left;
+  text-align : left;
+  list-style:none;
  
 }
 

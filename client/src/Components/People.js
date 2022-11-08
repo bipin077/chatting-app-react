@@ -56,7 +56,7 @@ a{
 }
 
 .people{
-    background : ${({theme})=>theme.colors.light};
+    background : #633d73;
     border-radius : 5px;
     display : flex;
     align-items : center;
@@ -71,6 +71,7 @@ a{
 .people .image-section{
     width : 50px;
     height : 50px;
+    padding: 5px;
 }
 
 .people .image-section img{
@@ -83,18 +84,22 @@ a{
 .people .details-section{
     display : flex;
     flex-direction : column;
-    padding-left : 30px;
+    padding-left : 12px;
 }
 
-.people .details-section h2{ 
-    color : ${({theme})=>theme.colors.green};
-    font-size : 18px;
+.people .details-section h2 {
+    color: #ffffff;
+    font-size: 18px;
+    font-family: monospace;
+    font-weight: 500;
+    text-transform: uppercase;
+    word-spacing: -6px;
 }
 
-.people .details-section p{ 
-    color : ${({theme})=>theme.colors.green};
-    font-size : 15px;
-    font-weight : 700;
+.people .details-section p {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
 }
 
 .people .icons{

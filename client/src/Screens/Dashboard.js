@@ -11,19 +11,22 @@ const Dashboard = () => {
           <Sidebar />
         </div>
         <div className="right-section">
-          <img src="./images/chats.png" />
-          <h2> Social Chat </h2>
-          <p> " The only platform for fast and secure chatting. "</p>
-
-          <span>Reasons why we are <b> No 1 </b> at market?</span>
-          <ul>
-    	  <div className='box'>
-            <li> We provide end to end authentication.</li>
-            <li> User can chat with random person.</li>
-            <li> All users data is secured in our server.</li>
-            <li> And many more.</li>
-        </div>
-          </ul>
+            <div className='top-section'>
+                <img src="./images/chats.png" alt="" />
+                <h2> Social Chat </h2>
+                <p> " The only platform for fast and secure chatting. "</p>
+            </div>
+            <div className='bottom-section'>
+                <span>Our Daily Latest News And Updates</span>
+                <ul>
+                    <div className='box'>
+                        <li> We provide end to end authentication.</li>
+                        <li> User can chat with random person.</li>
+                        <li> All users data is secured in our server.</li>
+                        <li> And many more.</li>
+                    </div>
+                </ul>
+            </div>
         </div>
       </div>
     </Component>
@@ -85,11 +88,11 @@ const Component = styled.section`
 
 .container .right-section ul
 {
-width:100%;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
+    width:100%;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
 }
 
 .container .right-section ul li

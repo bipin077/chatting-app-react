@@ -93,14 +93,14 @@ const Sidebar = () => {
 const Wrapper = styled.section`
     
 .side-bar{
-  height : 100vh;
+  height : 60vh;
     background : ${({ theme }) => theme.colors.green};
     position :relative;
 }
 
 .side-bar .logo {
   width: 100%;
-  padding: 8px 100px;
+  padding: 10px 70px;
   text-align: center;
   border: 7px solid #f3f3f3;
   box-shadow:inset 0px 0px 9px #818181;
@@ -113,9 +113,8 @@ const Wrapper = styled.section`
 
 .peoples {
   padding : 10px;
-  height:84vh;
+  height:76vh;
   overflow-y : auto;
-  padding-bottom: 50px;
 }
 
 .peoples h3{
@@ -131,14 +130,13 @@ background-color:#3f154c;
 }
 
 .side-bar .bottom-bar{
-    height : 7vh;
     background : ${({ theme }) => theme.colors.sidebarBottom};
-    position : fixed;
-    bottom : 0px;
-    width : 25%;
+    width : 100%;
    display : flex;
    align-items : center;
    justify-content : center;
+   margin-top : 5px;
+   height : 7vh;
 }
 .sc-dkrFOg.gJbEzy:first-child > a > .people {
   background-color: #450849;
@@ -150,7 +148,7 @@ background-color:#3f154c;
 
 .side-bar .bottom-bar .icons .bottom-icons{
     font-size : 18px;
-    margin-left : 30px;
+    margin-left : 15px;
     cursor : pointer;
     color : ${({ theme }) => theme.colors.light};
     height : 40px;
@@ -168,13 +166,13 @@ background-color:#3f154c;
 
 
 
-@media only screen and (max-width : ${({ theme }) => theme.media.tablet})
+@media only screen and (max-width : ${({ theme }) => theme.media.mobile})
 {
 
       .side-bar .logo{
-          width: 130px;
-          margin-left : 5px;
-          padding: 10px;
+        width: 105px;
+        margin-left: 5px;
+        padding: 6px;
       }
 
       .side-bar .bottom-bar{
@@ -202,7 +200,7 @@ background-color:#3f154c;
 
 }
 
-@media only screen and (min-width : ${({ theme }) => theme.media.tablet}) and (max-width : ${({ theme }) => theme.media.mobile})
+@media only screen and (max-width : ${({ theme }) => theme.media.tablet}) and (min-width : ${({ theme }) => theme.media.mobile})
 {
 
       .side-bar .logo{
@@ -237,7 +235,7 @@ background-color:#3f154c;
 }
 
 
-@media only screen and (min-width : ${({ theme }) => theme.media.mobile}) and (max-width : ${({ theme }) => theme.media.laptop})
+@media only screen and (min-width : ${({ theme }) => theme.media.tablet}) and (max-width : ${({ theme }) => theme.media.laptop})
 {
 
       .side-bar .logo{

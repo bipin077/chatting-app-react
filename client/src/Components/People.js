@@ -103,10 +103,10 @@ a{
 }
 
 .people .icons{
-    position : absolute;
-    top : 20%;
-    right : 10px;
-    font-size : 30px;
+    position: absolute;
+    top: -12%;
+    left: -5px;
+    font-size: 30px;
 }
 
 .people .icons .online{

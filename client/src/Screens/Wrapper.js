@@ -39,7 +39,7 @@ const Container = styled.section`
 
 .container .right-section
 {
-  width : 75%;
+  width : 100%;
 }
 
 .container .message-box{
@@ -47,7 +47,6 @@ const Container = styled.section`
   justify-content : space-between;
   background : ${({theme})=>theme.colors.light};
   width : 100%;
-  height : 79vh;
 }
 
 @media only screen and (max-width : ${({ theme }) => theme.media.mobile})

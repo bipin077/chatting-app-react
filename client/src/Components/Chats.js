@@ -68,7 +68,7 @@ width : 100%;
     overflow-y: auto;
     display: flex;
     flex-direction:column;
-    height : 88vh;
+    height : 75vh;
     
   }
 

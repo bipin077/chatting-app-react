@@ -43,7 +43,7 @@ const Wrapper = styled.div`
     height : 10vh;
     padding-left : 30px;
     border-bottom-left-radius: 40px;
-    position:fixed;
+    z-index : 9999;
 }
     
 

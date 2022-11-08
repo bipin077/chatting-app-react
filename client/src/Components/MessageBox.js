@@ -36,11 +36,11 @@ const MessageBox = () => {
  
   return (
     <Wrapper>
-      <div className="message">
+      <form className="message" onSubmit={sendMessage}>
         <BsEmojiSmile className='emojy' onClick={ () => setEmoji(true)} />
         <input type="text" placeholder="Enter Message" value={message} onChange={(e)=> setMessage(e.target.value)} />
-        <span><AiOutlineSend onClick={sendMessage} /></span>
-      </div>
+        <span><AiOutlineSend /></span>
+      </form>
       <div className={ emoji ? 'emojies' : 'no-emoji'}>
           <div className='close-emoji'>
               <AiOutlineClose onClick={()=>setEmoji(false)} />
@@ -187,10 +187,8 @@ display: -webkit-box;
     justify-content: flex-start;
     background: #24052a;
     width: 100%;
-    height: 12vh;
-    position: fixed;
-    bottom: 0;
-    width: 76%;
+    height: 15vh;
+    bottom: 10px;
     border-top-left-radius: 40px;
 
 .message {
